@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
 import Routes from "./Routes";
@@ -12,6 +12,9 @@ function App(props) {
 
 	useEffect(() => {
 		onLoad();
+		Auth.currentAuthenticatedUser().then((session) => {
+			console.log(session)
+		})
 	}, []);
 
 	async function onLoad() {
@@ -27,11 +30,14 @@ function App(props) {
 		setIsAuthenticating(false);
 	}
 
-	function handleLogout() {
+	async function handleLogout() {
+		await Auth.signOut();
 		userHasAuthenticated(false);
-	}
+		props.history.push("/login");
+	  }
 
 	return (
+		!isAuthenticating &&
 		<div className="App container">
 			<Navbar fluid collapseOnSelect>
 				<Navbar.Header>
@@ -43,7 +49,12 @@ function App(props) {
 				<Navbar.Collapse>
 					<Nav pullRight>
 						{isAuthenticated ? (
-							<NavItem onClick={handleLogout}>Logout</NavItem>
+							<>
+								<NavItem onClick={handleLogout}>Logout</NavItem>
+								<LinkContainer to="/settings">
+									<NavItem>Settings</NavItem>
+						  		</LinkContainer>
+							</>
 						) : (
 							<>
 								<LinkContainer to="/signup">
@@ -62,4 +73,4 @@ function App(props) {
 	);
 }
 
-export default App;
+export default withRouter(App);
