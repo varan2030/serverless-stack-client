@@ -84,7 +84,7 @@ export default class ChangeEmail extends Component {
           type="submit"
           bsSize="large"
           text="Update Email"
-          loadingText="Updating…"
+        //   loadingText="Updating…"
           disabled={!this.validatEmailForm()}
           isLoading={this.state.isSendingCode}
         />
@@ -113,7 +113,7 @@ export default class ChangeEmail extends Component {
           type="submit"
           bsSize="large"
           text="Confirm"
-          loadingText="Confirm…"
+        //   loadingText="Confirm…"
           isLoading={this.state.isConfirming}
           disabled={!this.validateConfirmForm()}
         />

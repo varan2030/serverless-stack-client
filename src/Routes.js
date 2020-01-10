@@ -7,6 +7,7 @@ import AppliedRoute from "./components/AppliedRoute";
 import ResetPassword from "./containers/ResetPassword";
 import Settings from "./containers/Settings";
 import ChangePassword from "./containers/ChangePassword";
+import ChangeEmail from "./containers/ChangeEmail";
 
 export default function Routes({ appProps }) {
 	return (
@@ -29,6 +30,12 @@ export default function Routes({ appProps }) {
 				path="/settings/password"
 				exact
 				component={ChangePassword}
+				props={appProps}
+			/>
+			<ChangeEmail 
+				path="/settings/email"
+				exact
+				component={ChangeEmail}
 				props={appProps}
 			/>
 			{/* Finally, catch all unmatched routes */}
