@@ -9,6 +9,7 @@ import Settings from "./containers/Settings";
 import ChangePassword from "./containers/ChangePassword";
 import ChangeEmail from "./containers/ChangeEmail";
 import Signup from "./containers/Signup";
+import NewNote from "./containers/NewNote";
 
 export default function Routes({ appProps }) {
 	return (
@@ -40,6 +41,7 @@ export default function Routes({ appProps }) {
 				props={appProps}
 			/>
 			<AppliedRoute path="/signup" exact component={Signup} appProps={appProps} />
+			<AppliedRoute path="/notes/new" exact component={NewNote} appProps={appProps} />
 			{/* Finally, catch all unmatched routes */}
 			<Route component={NotFound} />
 		</Switch>
