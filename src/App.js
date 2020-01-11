@@ -13,8 +13,8 @@ function App(props) {
 	useEffect(() => {
 		onLoad();
 		Auth.currentAuthenticatedUser().then((session) => {
-			console.log(session)
-		})
+			console.log(session);
+		});
 	}, []);
 
 	async function onLoad() {
@@ -34,42 +34,46 @@ function App(props) {
 		await Auth.signOut();
 		userHasAuthenticated(false);
 		props.history.push("/login");
-	  }
+	}
 
 	return (
-		!isAuthenticating &&
-		<div className="App container">
-			<Navbar fluid collapseOnSelect>
-				<Navbar.Header>
-					<Navbar.Brand>
-						<Link to="/">Scratch</Link>
-					</Navbar.Brand>
-					<Navbar.Toggle />
-				</Navbar.Header>
-				<Navbar.Collapse>
-					<Nav pullRight>
-						{isAuthenticated ? (
-							<>
-								<NavItem onClick={handleLogout}>Logout</NavItem>
-								<LinkContainer to="/settings">
-									<NavItem>Settings</NavItem>
-						  		</LinkContainer>
-							</>
-						) : (
-							<>
-								<LinkContainer to="/signup">
-									<NavItem>Signup</NavItem>
-								</LinkContainer>
-								<LinkContainer to="/login">
-									<NavItem>Login</NavItem>
-								</LinkContainer>
-							</>
-						)}
-					</Nav>
-				</Navbar.Collapse>
-			</Navbar>
-			<Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
-		</div>
+		!isAuthenticating && (
+			<div className="App container">
+				<Navbar fluid collapseOnSelect>
+					<Navbar.Header>
+						<Navbar.Brand>
+							<Link to="/">Scratch</Link>
+						</Navbar.Brand>
+						<Navbar.Toggle />
+					</Navbar.Header>
+					<Navbar.Collapse>
+						<Nav pullRight>
+							{isAuthenticated ? (
+								<>
+									<NavItem onClick={handleLogout}>Logout</NavItem>
+									<LinkContainer to="/billing">
+										<NavItem>Pay</NavItem>
+									</LinkContainer>
+									<LinkContainer to="/settings">
+										<NavItem>Settings</NavItem>
+									</LinkContainer>
+								</>
+							) : (
+								<>
+									<LinkContainer to="/signup">
+										<NavItem>Signup</NavItem>
+									</LinkContainer>
+									<LinkContainer to="/login">
+										<NavItem>Login</NavItem>
+									</LinkContainer>
+								</>
+							)}
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
+				<Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+			</div>
+		)
 	);
 }
 

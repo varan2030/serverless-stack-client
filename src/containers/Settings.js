@@ -4,31 +4,23 @@ import LoaderButton from "../components/LoaderButton";
 import "./Settings.css";
 
 export default class Settings extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
+		console.log(props);
 
-    this.state = {
-    };
-  }
+		this.state = {};
+	}
 
-  render() {
-    return (
-      <div className="Settings">
-        <LinkContainer to="/settings/email">
-          <LoaderButton
-            block
-            bsSize="large"
-            text="Change Email"
-          />
-        </LinkContainer>
-        <LinkContainer to="/settings/password">
-          <LoaderButton
-            block
-            bsSize="large"
-            text="Change Password"
-          />
-        </LinkContainer>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="Settings">
+				<LinkContainer to="/settings/email">
+					<LoaderButton block bsSize="large" text="Change Email" />
+				</LinkContainer>
+				<LinkContainer to="/settings/password">
+					<LoaderButton block bsSize="large" text="Change Password" />
+				</LinkContainer>
+			</div>
+		);
+	}
 }

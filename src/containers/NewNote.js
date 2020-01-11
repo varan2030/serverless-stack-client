@@ -8,6 +8,7 @@ import { s3Upload } from "../libs/awsLib";
 import { withRouter } from "react-router-dom";
 
 function NewNote(props) {
+	console.log(props);
 	const file = useRef(null);
 	const [content, setContent] = useState("");
 	const [isLoading, setIsLoading] = useState(false);

@@ -10,38 +10,77 @@ import ChangePassword from "./containers/ChangePassword";
 import ChangeEmail from "./containers/ChangeEmail";
 import Signup from "./containers/Signup";
 import NewNote from "./containers/NewNote";
+import Notes from "./containers/Notes";
+import Billing from "./containers/Billing";
+
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 export default function Routes({ appProps }) {
+	console.log(appProps);
 	return (
 		<Switch>
-			<AppliedRoute path="/" exact component={Home} appProps={appProps} />
-			<AppliedRoute path="/login" exact component={Login} appProps={appProps} />
-			<AppliedRoute
+			<UnauthenticatedRoute
+				path="/"
+				exact
+				component={Home}
+				appProps={appProps}
+			/>
+			<UnauthenticatedRoute
+				path="/login"
+				exact
+				component={Login}
+				appProps={appProps}
+			/>
+			<AuthenticatedRoute
 				path="/login/reset"
 				exact
 				component={ResetPassword}
-				props={appProps}
+				appProps={appProps}
 			/>
-			<AppliedRoute
+			<AuthenticatedRoute
 				path="/settings"
 				exact
 				component={Settings}
-				props={appProps}
+				appProps={appProps}
 			/>
-			<AppliedRoute
+			<AuthenticatedRoute
 				path="/settings/password"
 				exact
 				component={ChangePassword}
-				props={appProps}
+				appProps={appProps}
 			/>
-			<AppliedRoute 
+			<AuthenticatedRoute
 				path="/settings/email"
 				exact
 				component={ChangeEmail}
-				props={appProps}
+				appProps={appProps}
 			/>
-			<AppliedRoute path="/signup" exact component={Signup} appProps={appProps} />
-			<AppliedRoute path="/notes/new" exact component={NewNote} appProps={appProps} />
+			<AuthenticatedRoute
+				path="/billing"
+				exact
+				component={Billing}
+				appProps={appProps}
+			/>
+			<UnauthenticatedRoute
+				path="/signup"
+				exact
+				component={Signup}
+				appProps={appProps}
+			/>
+			<AuthenticatedRoute
+				path="/notes/new"
+				exact
+				component={NewNote}
+				appProps={appProps}
+			/>
+			<AuthenticatedRoute
+				path="/notes/:id"
+				exact
+				component={Notes}
+				appProps={appProps}
+			/>
+
 			{/* Finally, catch all unmatched routes */}
 			<Route component={NotFound} />
 		</Switch>
