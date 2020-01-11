@@ -6,7 +6,6 @@ import "./Settings.css";
 export default class Settings extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 		this.state = {};
 	}

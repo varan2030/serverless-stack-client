@@ -6,7 +6,6 @@ import config from "../config";
 import "./Billing.css";
 
 export default function Billing(props) {
-	console.log(props);
 	const [isLoading, setIsLoading] = useState(false);
 
 	function billUser(details) {

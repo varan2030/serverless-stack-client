@@ -17,7 +17,6 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 export default function Routes({ appProps }) {
-	console.log(appProps);
 	return (
 		<Switch>
 			<UnauthenticatedRoute
