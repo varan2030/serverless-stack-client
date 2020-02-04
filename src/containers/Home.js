@@ -41,6 +41,8 @@ export default function Home(props) {
 							new Date(note.createdAt).toLocaleString() +
 							" " +
 							note.attachment}
+												<br/><img src={`https://note-app-course.s3.amazonaws.com/private/${note.userId}/${note.attachment}`}  alt="Almaz" width="300px" height="200px"/>
+
 					</ListGroupItem>
 				</LinkContainer>
 			) : (

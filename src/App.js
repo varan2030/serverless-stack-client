@@ -14,6 +14,7 @@ function App(props) {
 		onLoad();
 		Auth.currentAuthenticatedUser().then((session) => {
 			console.log(session);
+			console.log(session.signInUserSession.accessToken.payload['cognito:groups'][0] === 'seller')
 		});
 	}, []);
 
