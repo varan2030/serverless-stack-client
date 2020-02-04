@@ -35,7 +35,7 @@ function NewNote(props) {
 
 		try {
 			const attachment = file.current ? await s3Upload(file.current) : null;
-
+			console.log({ content, attachment });
 			await createNote({ content, attachment });
 			props.history.push("/");
 		} catch (e) {
